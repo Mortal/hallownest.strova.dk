@@ -1,10 +1,11 @@
 {
   "name": "olhallownest",
-  "version": "1.0.0",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^5.2.6"
