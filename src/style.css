@@ -1,6 +1,7 @@
 @import "node_modules/ol/ol.css";
 
 html, body {
+  background-color: black;
   margin: 0;
   height: 100%;
 }
