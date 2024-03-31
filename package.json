@@ -1,0 +1,15 @@
+{
+  "name": "olhallownest",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.6"
+  },
+  "dependencies": {
+    "ol": "latest"
+  }
+}
