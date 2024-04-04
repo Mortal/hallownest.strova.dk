@@ -7,6 +7,7 @@ import { areaColor, defaultColor } from "./areaColor";
 import { getMap } from "./getMap";
 import { loadGeojson } from "./loadGeojson";
 import { lerp } from './lerp';
+import Stroke from 'ol/style/Stroke';
 
 export default React.memo(function SectionsLayer() {
   React.useEffect(() => {
@@ -16,20 +17,24 @@ export default React.memo(function SectionsLayer() {
       source,
       updateWhileAnimating: true,
       style: (feature, res) => {
-        const atext = lerp(res, [2, 3], [0.0, 1.0]);
-        const a = lerp(res, [20, 25], [0.0, 0.3]);
+        const text = lerp(res, [2, 3], [0.0, 1.0]);
+        const fill = lerp(res, [20, 25], [0.0, 0.3]);
+        const stroke = lerp(res, [20, 25], [0.0, 1.0]);
         const areaName = (feature.getProperties()["area"] ?? "") + "";
         return [
           new Style({
-            text: atext === 0.0 ? undefined : new Text({
+            text: text === 0.0 ? undefined : new Text({
               text: areaName + "",
-              fill: new Fill({ color: `rgba(255,255,255,${atext})` }),
+              fill: new Fill({ color: `rgba(255,255,255,${text})` }),
               declutterMode: "none",
               overflow: true,
             }),
             fill: new Fill({
-              color: `rgba(${areaColor[areaName] || defaultColor},${a})`
-            })
+              color: `rgba(${areaColor[areaName] || defaultColor},${fill})`
+            }),
+            stroke: new Stroke({
+              color: `rgba(${areaColor[areaName] || defaultColor},${stroke})`
+            }),
           })
         ];
       },
