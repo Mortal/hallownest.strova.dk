@@ -1,2 +1,6 @@
 node_modules
 dist
+/src/vectordata
+/public/hallownest.tif
+/public/hallownest.tif.aux.xml
+/tmp

@@ -129,11 +129,11 @@ def ogr2ogr_append(
 
 def main() -> None:
     sourcedb = "hallownestvectorlayers.gpkg"
-    outdir = "public"
+    outdir = "src/vectordata"
     tmpdir = "tmp"
     assert os.path.isfile(sourcedb)
-    assert os.path.isdir(outdir)
     os.makedirs(tmpdir, exist_ok=True)
+    os.makedirs(outdir, exist_ok=True)
     sections = qgis_dissolve(
         input=f"{sourcedb}|layername=sections",
         field="area",
