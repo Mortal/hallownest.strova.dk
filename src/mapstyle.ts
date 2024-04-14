@@ -1,30 +1,36 @@
-const areaColorRaw: Record<string, number[]> = {
-  "Crystal Peak": [0x36, 0x30, 0x39],
-  "Royal Waterways": [0x27, 0x3c, 0x3c],
-  "Resting Grounds": [0x39, 0x2e, 0x29],
-  "City of Tears": [0x2b, 0x2e, 0x3b],
-  "Fog Canyon": [0x3d, 0x33, 0x3b],
-  "Fungal Wastes": [0x39, 0x3b, 0x31],
-  "Mantis Village": [0x2f, 0x31, 0x24],
-  "Howling Cliffs": [0x1e, 0x20, 0x1f],
-  "Dirtmouth": [0x2f, 0x2f, 0x2f],
-  "Forgotten Crossroads": [0x2c, 0x32, 0x39],
-  "Queen's Gardens": [0x25, 0x2d, 0x26],
-  "Queen's Station": [0x39, 0x39, 0x39],
-  "Kingdom's Edge": [0x35, 0x32, 0x2c],
-  "Greenpath": [0x33, 0x3c, 0x30],
-  "Abyss": [0x1f, 0x1f, 0x1f],
-  "Ancient Basin": [0x2f, 0x2f, 0x2e],
-  "Deepnest": [0x29, 0x2d, 0x32],
-  "The Hive": [0x3b, 0x34, 0x26],
+const areaColorRaw: Record<string, number> = {
+  "Crystal Peak": 0x363039,
+  "Royal Waterways": 0x273c3c,
+  "Isma's Grove": 0x1d3d30,
+  "Resting Grounds": 0x392e29,
+  "City of Tears": 0x2b2e3b,
+  "Soul Sanctum": 0x202030,
+  "Watcher's Spire": 0x202137,
+  "Tower of Love": 0x202137,
+  // Not sure what the elevator shaft below City is officially called.
+  "Abandoned Elevator": 0x232232,
+  "Fog Canyon": 0x3d333b,
+  "Fungal Wastes": 0x393b31,
+  "Mantis Village": 0x2f3124,
+  "Howling Cliffs": 0x1e201f,
+  "Dirtmouth": 0x2f2f2f,
+  "Forgotten Crossroads": 0x2c3239,
+  "Queen's Gardens": 0x252d26,
+  "Queen's Station": 0x393939,
+  "Kingdom's Edge": 0x35322c,
+  "Greenpath": 0x333c30,
+  "Abyss": 0x1f1f1f,
+  "Ancient Basin": 0x2f2f2e,
+  "Deepnest": 0x292d32,
+  "The Hive": 0x3b3426,
 }
-
-const defaultColor = [0, 0, 255];
 
 function rgba(areaName: string | null, alpha: number) {
   const color = areaColorRaw[((areaName ?? "") + "")];
-  if (color == null) return `rgba(${defaultColor},${alpha})`;
-  const [r, g, b] = color;
+  if (color == null) return `rgba(255,0,255,${alpha})`;
+  const r = (color >> 16) & 0xFF;
+  const g = (color >> 8) & 0xFF;
+  const b = color & 0xFF;
   const x = 5;
   const y = x * 22;
   return `rgba(${[x * r - y, x * g - y, x * b - y, alpha]})`;
